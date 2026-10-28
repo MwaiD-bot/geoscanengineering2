@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="GeoScan Engineering gallery of field investigation, drilling and laboratory work." />
+    <title>Gallery | GeoScan Engineering</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="container nav">
+      <a class="brand" href="index.html" aria-label="GeoScan Engineering home">
+        <img class="brand-mark" src="assets/logo-mark.svg" alt="GeoScan Engineering" />
+        <div class="brand-text">
+          <span class="brand-name">GeoScan</span>
+          <span class="brand-sub">Engineering</span>
+        </div>
+      </a>
+      <nav class="links" aria-label="Main navigation">
+        <a href="services.html">Services</a>
+        <a href="approach.html">Approach</a>
+        <a class="active" href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="container page-hero">
+        <div class="eyebrow"><span class="dot"></span> GeoScan fieldwork</div>
+        <h1>Fieldwork, equipment &amp; <span>technical investigation.</span></h1>
+        <p>Browse selected activities from geophysical surveys, drilling operations, geological inspection and laboratory testing.</p>
+      </section>
+
+      <section class="container">
+        <div class="slideshow">
+          <div class="slide-frame" id="slideFrame">
+            <img id="slideImage" src="images/terrain-survey.svg" alt="Field geophysical survey" />
+          </div>
+          <div class="slide-caption">
+            <h2 id="slideTitle">Field Geophysical Survey</h2>
+            <p id="slideText">Surface geophysical measurements used to investigate subsurface conditions and guide engineering or groundwater decisions.</p>
+          </div>
+          <div class="slide-controls">
+            <button class="circle-btn" id="prev" aria-label="Previous photo">←</button>
+            <button class="circle-btn" id="pause" aria-label="Pause slideshow">Ⅱ</button>
+            <button class="circle-btn" id="next" aria-label="Next photo">→</button>
+          </div>
+          <div class="dots" id="dots"></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="section-head">
+          <h2>Gallery index.</h2>
+          <p>Each image includes a concise description so visitors can understand the technical activity shown.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card"><img src="images/terrain-survey.svg" alt="Field Geophysical Survey" loading="lazy"><figcaption><strong>Field Geophysical Survey</strong><span>Surface geophysical measurements used to investigate subsurface conditions and guide engineering or groundwater decisions.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/drilling-rig.svg" alt="Drilling Operations & Field Supervision" loading="lazy"><figcaption><strong>Drilling Operations & Field Supervision</strong><span>Field supervision supporting systematic observation and documentation of drilling activities.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/lab-test.svg" alt="Laboratory Testing" loading="lazy"><figcaption><strong>Laboratory Testing</strong><span>Technical testing of soil and rock properties to support engineering interpretation and design.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/field-team.svg" alt="Geophysical Field Team" loading="lazy"><figcaption><strong>Geophysical Field Team</strong><span>Field personnel collecting measurements and documenting site conditions during investigation.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/geological-mapping.svg" alt="Geological Mapping" loading="lazy"><figcaption><strong>Geological Mapping</strong><span>Detailed outcrop inspection and documentation of rock characteristics to support interpretation.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/road-investigation.svg" alt="Roadside Geophysical Investigation" loading="lazy"><figcaption><strong>Roadside Geophysical Investigation</strong><span>Geophysical investigation relevant to infrastructure performance and subsurface variability.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/terrain-survey.svg" alt="Urban Geophysical Investigation" loading="lazy"><figcaption><strong>Urban Geophysical Investigation</strong><span>Non-invasive measurements in urban contexts to support subsurface characterization where access is constrained.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/drilling-rig.svg" alt="Drilling Equipment" loading="lazy"><figcaption><strong>Drilling Equipment</strong><span>Close-up view of drilling operations showing machinery used for subsurface investigation.</span></figcaption></figure>
+          <figure class="gallery-card"><img src="images/rock-core.svg" alt="Core and Material Assessment" loading="lazy"><figcaption><strong>Core & Material Assessment</strong><span>Forward-looking review of recovered materials and field observations to guide engineering interpretation.</span></figcaption></figure>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const slides = [
+        { file: 'images/terrain-survey.svg', title: 'Field Geophysical Survey', text: 'Surface geophysical measurements used to investigate subsurface conditions and guide engineering or groundwater decisions.' },
+        { file: 'images/drilling-rig.svg', title: 'Drilling Operations & Field Supervision', text: 'Systematic drilling supervision and technical review of field operations, sampling and subsurface observations.' },
+        { file: 'images/lab-test.svg', title: 'Laboratory Testing', text: 'Technical testing of soil and rock properties to support engineering interpretation and design validation.' },
+        { file: 'images/field-team.svg', title: 'Geophysical Field Team', text: 'Personnel and equipment working together to collect reliable subsurface measurements and site data.' },
+        { file: 'images/geological-mapping.svg', title: 'Geological Mapping', text: 'Field inspection and documentation of geological features for more robust site interpretation.' },
+        { file: 'images/road-investigation.svg', title: 'Roadside Geophysical Investigation', text: 'Subsurface assessment relevant to infrastructure performance, ground variability and engineering decisions.' }
+      ];
+
+      let i = 0, playing = true, timer;
+      const img = document.getElementById('slideImage');
+      const title = document.getElementById('slideTitle');
+      const text = document.getElementById('slideText');
+      const frame = document.getElementById('slideFrame');
+      const dots = document.getElementById('dots');
+
+      slides.forEach((slide, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'dotnav' + (index === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Show photo ' + (index + 1));
+        dot.onclick = () => show(index);
+        dots.appendChild(dot);
+      });
+
+      function show(n) {
+        i = (n + slides.length) % slides.length;
+        frame.classList.add('fade');
+        setTimeout(() => {
+          img.src = slides[i].file;
+          img.alt = slides[i].title;
+          title.textContent = slides[i].title;
+          text.textContent = slides[i].text;
+          frame.classList.remove('fade');
+          document.querySelectorAll('.dotnav').forEach((dot, index) => dot.classList.toggle('active', index === i));
+        }, 260);
+      }
+
+      function next() { show(i + 1); }
+      function prev() { show(i - 1); }
+      function start() {
+        clearInterval(timer);
+        timer = setInterval(next, 5200);
+      }
+      function toggle() {
+        playing = !playing;
+        document.getElementById('pause').textContent = playing ? 'Ⅱ' : '▶';
+        if (playing) start(); else clearInterval(timer);
+      }
+
+      document.getElementById('next').onclick = () => { next(); start(); };
+      document.getElementById('prev').onclick = () => { prev(); start(); };
+      document.getElementById('pause').onclick = toggle;
+      start();
+    </script>
+
+    <footer class="container footer">
+      <div>© 2026 GeoScan Engineering · Nakuru, Kenya</div>
+      <div class="contact">
+        <a href="mailto:info@geoscanengineering.co.ke">info@geoscanengineering.co.ke</a>
+        <a href="tel:+254728164666">0728 164 666</a>
+      </div>
+    </footer>
+  </body>
+</html>

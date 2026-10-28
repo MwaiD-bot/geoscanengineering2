@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="GeoScan Engineering favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#183d31"/>
+      <stop offset="100%" stop-color="#0e2921"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="88" height="88" rx="22" fill="url(#bg)"/>
+  <path d="M24 48c9-13 18-19 29-19 8 0 14 4 19 11" fill="none" stroke="#d7a93c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M20 61c11-14 21-21 34-21 9 0 16 4 23 13" fill="none" stroke="#dfeedc" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M44 16h8v42h-8z" fill="#f4f1e7"/>
+  <path d="M35 16h26l-4-9H39z" fill="#f4f1e7"/>
+  <circle cx="63" cy="52" r="4" fill="#f4f1e7"/>
+</svg>
